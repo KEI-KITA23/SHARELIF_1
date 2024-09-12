@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sharelife/main.dart';
+import 'package:sharelife/ranking_page.dart';
+import 'package:sharelife/my_page.dart';
 
 class keepPage extends StatelessWidget {
   const keepPage({super.key});
@@ -27,7 +30,12 @@ class keepPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => firstPage()),
+                    );
+                  },
                   child: Icon(
                     Icons.home, // homeのアイコン
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
@@ -38,9 +46,14 @@ class keepPage extends StatelessWidget {
                   width: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => ranking_page()),
+                    );
+                  },
                   child: Icon(
-                    Icons.local_fire_department, // homeのアイコン
+                    Icons.local_fire_department, // rankingのアイコン
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
@@ -49,9 +62,14 @@ class keepPage extends StatelessWidget {
                   width: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => myPage()),
+                    );
+                  },
                   child: Icon(
-                    Icons.person, // homeのアイコン
+                    Icons.person, // 人のアイコン
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
