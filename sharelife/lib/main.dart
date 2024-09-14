@@ -99,7 +99,7 @@ class firstPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => ranking_page()),
+                      MaterialPageRoute(builder: (context) => rankingPage()),
                     );
                   },
                   child: Icon(

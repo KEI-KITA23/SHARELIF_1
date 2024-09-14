@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sharelife/main.dart';
 import 'package:sharelife/my_page.dart';
 
-class ranking_page extends StatelessWidget {
-  const ranking_page({super.key});
+class rankingPage extends StatelessWidget {
+  const rankingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
