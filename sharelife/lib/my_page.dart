@@ -125,7 +125,7 @@ class _HomeViewState extends State<HomeView> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => ranking_page()),
+                    MaterialPageRoute(builder: (context) => rankingPage()),
                   );
                 },
                 child: Icon(
