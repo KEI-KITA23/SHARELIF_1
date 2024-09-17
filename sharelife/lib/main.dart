@@ -123,9 +123,7 @@ class FirstPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(0),
                       )),
                 ),
-                SizedBox(
-                  width: 20,
-                ),
+                SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(
