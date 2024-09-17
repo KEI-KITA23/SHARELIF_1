@@ -3,8 +3,8 @@ import 'package:sharelife/main.dart';
 import 'package:sharelife/ranking_page.dart';
 import 'package:sharelife/my_page.dart';
 
-class keepPage extends StatelessWidget {
-  const keepPage({super.key});
+class KeepPage extends StatelessWidget {
+  const KeepPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class keepPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => firstPage()),
+                      MaterialPageRoute(builder: (context) => FirstPage()),
                     );
                   },
                   child: Icon(
@@ -53,6 +53,13 @@ class keepPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
                 SizedBox(
                   width: 20,
@@ -61,7 +68,7 @@ class keepPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => rankingPage()),
+                      MaterialPageRoute(builder: (context) => RankingPage()),
                     );
                   },
                   child: Icon(
@@ -69,6 +76,13 @@ class keepPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
                 SizedBox(
                   width: 20,
@@ -77,7 +91,7 @@ class keepPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => myPage()),
+                      MaterialPageRoute(builder: (context) => MyPage()),
                     );
                   },
                   child: Icon(
@@ -85,6 +99,13 @@ class keepPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
               ],
             ),

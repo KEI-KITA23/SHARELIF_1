@@ -1,26 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sharelife/friend_page.dart';
+import 'package:sharelife/main.dart';
+import 'package:sharelife/ranking_page.dart';
 import 'package:sharelife/my_page.dart';
 import 'package:sharelife/add_page.dart';
-import 'package:sharelife/ranking_page.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: FirstPage(),
-    );
-  }
-}
-
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+class FriendPage extends StatelessWidget {
+  const FriendPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +42,17 @@ class FirstPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center, // 縦方向に中央揃え
             children: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => FirstPage()),
+                  );
+                },
                 child: Text(
                   'フォロー中',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.black,
-                    decorationThickness: 2.0,
                   ),
                 ),
               ),
@@ -73,17 +60,15 @@ class FirstPage extends StatelessWidget {
                 width: 15,
               ),
               TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => FriendPage()),
-                  );
-                },
+                onPressed: () {},
                 child: Text(
                   'ともだち',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.black,
+                    decorationThickness: 2.0,
                   ),
                 ),
               ),

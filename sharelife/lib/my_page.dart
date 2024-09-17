@@ -4,7 +4,7 @@ import 'package:sharelife/keep_page.dart';
 import 'package:sharelife/ranking_page.dart';
 import 'package:intl/intl.dart';
 
-class myPage extends StatelessWidget {
+class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => keepPage()),
+                  MaterialPageRoute(builder: (context) => KeepPage()),
                 );
               },
               child: Icon(
@@ -46,6 +46,13 @@ class _HomeViewState extends State<HomeView> {
                 color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                 size: 30.0, // アイコンのサイズ
               ),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  )),
             ),
             ElevatedButton(
               onPressed: () {
@@ -59,6 +66,13 @@ class _HomeViewState extends State<HomeView> {
                 color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                 size: 30.0, // アイコンのサイズ
               ),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0),
+                  )),
             ),
           ],
         ),
@@ -109,7 +123,7 @@ class _HomeViewState extends State<HomeView> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => firstPage()),
+                    MaterialPageRoute(builder: (context) => FirstPage()),
                   );
                 },
                 child: Icon(
@@ -117,6 +131,13 @@ class _HomeViewState extends State<HomeView> {
                   color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                   size: 55.0, // アイコンのサイズ
                 ),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    )),
               ),
               SizedBox(
                 width: 20,
@@ -125,7 +146,7 @@ class _HomeViewState extends State<HomeView> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => rankingPage()),
+                    MaterialPageRoute(builder: (context) => RankingPage()),
                   );
                 },
                 child: Icon(
@@ -133,6 +154,13 @@ class _HomeViewState extends State<HomeView> {
                   color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                   size: 55.0, // アイコンのサイズ
                 ),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    )),
               ),
               SizedBox(
                 width: 20,
@@ -144,6 +172,13 @@ class _HomeViewState extends State<HomeView> {
                   color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                   size: 55.0, // アイコンのサイズ
                 ),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    )),
               ),
             ],
           ),
