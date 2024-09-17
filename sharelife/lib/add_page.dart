@@ -3,8 +3,8 @@ import 'package:sharelife/main.dart';
 import 'package:sharelife/my_page.dart';
 import 'package:sharelife/ranking_page.dart';
 
-class addPage extends StatelessWidget {
-  const addPage({super.key});
+class AddPage extends StatelessWidget {
+  const AddPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class addPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => firstPage()),
+                      MaterialPageRoute(builder: (context) => FirstPage()),
                     );
                   },
                   child: Icon(
@@ -49,7 +49,7 @@ class addPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => rankingPage()),
+                      MaterialPageRoute(builder: (context) => RankingPage()),
                     );
                   },
                   child: Icon(
@@ -65,7 +65,7 @@ class addPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => myPage()),
+                      MaterialPageRoute(builder: (context) => MyPage()),
                     );
                   },
                   child: Icon(

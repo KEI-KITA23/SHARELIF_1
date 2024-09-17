@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sharelife/main.dart';
 import 'package:sharelife/my_page.dart';
 
-class rankingPage extends StatelessWidget {
-  const rankingPage({super.key});
+class RankingPage extends StatelessWidget {
+  const RankingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class rankingPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => firstPage()),
+                      MaterialPageRoute(builder: (context) => FirstPage()),
                     );
                   },
                   child: Icon(
@@ -40,6 +40,13 @@ class rankingPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
                 SizedBox(
                   width: 20,
@@ -51,6 +58,13 @@ class rankingPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
                 SizedBox(
                   width: 20,
@@ -59,7 +73,7 @@ class rankingPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => myPage()),
+                      MaterialPageRoute(builder: (context) => MyPage()),
                     );
                   },
                   child: Icon(
@@ -67,6 +81,13 @@ class rankingPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
               ],
             ),
