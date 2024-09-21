@@ -24,11 +24,22 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   DateTime selectedDate = DateTime.now();
+  // TextEditingControllerを定義
+  List<TextEditingController> _controllers =
+      List.generate(24, (index) => TextEditingController());
+
+  @override
+  void dispose() {
+    // コントローラーを解放
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
       appBar: AppBar(
         title: Row(
           children: [
@@ -56,10 +67,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             ElevatedButton(
               onPressed: () {
-                /*Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => firstPage()),
-                );*/
+                // メニューのアクションを追加
               },
               child: Icon(
                 Icons.menu, // menuのアイコン
@@ -107,7 +115,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: 24,
+                    itemCount: 24, // 24時間のスロットを作成
                     itemBuilder: (context, index) {
                       return timeSlot(index);
                     },
@@ -139,9 +147,7 @@ class _HomeViewState extends State<HomeView> {
                       borderRadius: BorderRadius.circular(0),
                     )),
               ),
-              SizedBox(
-                width: 20,
-              ),
+              SizedBox(width: 20),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushReplacement(
@@ -162,9 +168,7 @@ class _HomeViewState extends State<HomeView> {
                       borderRadius: BorderRadius.circular(0),
                     )),
               ),
-              SizedBox(
-                width: 20,
-              ),
+              SizedBox(width: 20),
               ElevatedButton(
                 onPressed: () {},
                 child: Icon(
@@ -206,9 +210,12 @@ class _HomeViewState extends State<HomeView> {
                   margin: EdgeInsets.only(left: 4.0),
                   color: Color(0xfffcf9f5),
                   padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Event Details',
-                    style: TextStyle(fontSize: 16.0),
+                  child: TextField(
+                    controller: _controllers[hour], // コントローラーを設定
+                    decoration: InputDecoration(
+                      labelText: 'Enter some text',
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
               ),
