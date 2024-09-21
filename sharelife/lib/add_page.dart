@@ -41,6 +41,13 @@ class AddPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
                 SizedBox(
                   width: 20,
@@ -57,6 +64,13 @@ class AddPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
                 SizedBox(
                   width: 20,
@@ -73,6 +87,13 @@ class AddPage extends StatelessWidget {
                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      )),
                 ),
               ],
             ),
