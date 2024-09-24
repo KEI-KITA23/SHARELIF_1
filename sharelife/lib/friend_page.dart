@@ -3,6 +3,7 @@ import 'package:sharelife/main.dart';
 import 'package:sharelife/ranking_page.dart';
 import 'package:sharelife/my_page.dart';
 import 'package:sharelife/add_page.dart';
+import 'package:provider/provider.dart';
 
 class FriendPage extends StatelessWidget {
   const FriendPage({super.key});
@@ -78,13 +79,18 @@ class FriendPage extends StatelessWidget {
             child: Center(
               child: Container(
                 width: 500, // 幅を指定してサイズを調整
-                child: ListView(
-                  shrinkWrap: true, // リストの高さに合わせてサイズを調整
-                  children: [
-                    TweetTile(),
-                    TweetTile(),
-                    TweetTile(),
-                  ],
+                child: ListView.builder(
+                  itemCount: 3, // 必要な数を指定
+                  itemBuilder: (context, index) {
+                    return ChangeNotifierProvider(
+                      create: (context) => LikeModel(),
+                      child: Consumer<LikeModel>(
+                        builder: (context, likeModel, child) {
+                          return TweetTile(likeModel: likeModel);
+                        },
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -164,9 +170,9 @@ class FriendPage extends StatelessWidget {
 }
 
 class TweetTile extends StatelessWidget {
-  const TweetTile({
-    super.key,
-  });
+  final LikeModel likeModel; // LikeModelのインスタンスを受け取る
+
+  const TweetTile({super.key, required this.likeModel});
 
   @override
   Widget build(BuildContext context) {
@@ -210,12 +216,15 @@ class TweetTile extends StatelessWidget {
                       Row(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              likeModel.toggleLike(); // いいねの状態を切り替え
+                            },
                             child: Icon(
-                              Icons.favorite, // ハートのアイコン
-                              color: const Color.fromARGB(
-                                  255, 236, 93, 164), // アイコンの色
-                              size: 25.0, // アイコンのサイズ
+                              likeModel.isLiked
+                                  ? Icons.favorite // いいねされた状態
+                                  : Icons.favorite_border, // いいねされていない状態
+                              color: const Color.fromARGB(255, 236, 93, 164),
+                              size: 25.0,
                             ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.transparent,
@@ -225,13 +234,18 @@ class TweetTile extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(0),
                                 )),
                           ),
+                          //SizedBox(width: 1),
+                          Text('${likeModel.likes}'), // いいねの数を表示
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              likeModel.toggleSave(); // 保存状態を切り替え
+                            },
                             child: Icon(
-                              Icons.save, // 保存アイコン
-                              color: const Color.fromARGB(
-                                  182, 22, 45, 217), // アイコンの色
-                              size: 30.0, // アイコンのサイズ
+                              likeModel.isSaved
+                                  ? Icons.bookmark // 保存された状態
+                                  : Icons.bookmark_border, // 保存されていない状態
+                              color: const Color.fromARGB(255, 22, 45, 217),
+                              size: 30.0,
                             ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.transparent,
@@ -283,5 +297,30 @@ class TweetTile extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class LikeModel with ChangeNotifier {
+  int _likes = 0;
+  bool _isLiked = false;
+  bool _isSaved = false; // 保存の状態
+
+  int get likes => _likes;
+  bool get isLiked => _isLiked;
+  bool get isSaved => _isSaved;
+
+  void toggleLike() {
+    if (_isLiked) {
+      _likes--;
+    } else {
+      _likes++;
+    }
+    _isLiked = !_isLiked;
+    notifyListeners();
+  }
+
+  void toggleSave() {
+    _isSaved = !_isSaved; // 状態を切り替える
+    notifyListeners(); // UIを更新
   }
 }

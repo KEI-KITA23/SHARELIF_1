@@ -3,6 +3,7 @@ import 'package:sharelife/friend_page.dart';
 import 'package:sharelife/my_page.dart';
 import 'package:sharelife/add_page.dart';
 import 'package:sharelife/ranking_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,9 +37,9 @@ class FirstPage extends StatelessWidget {
               );
             },
             child: Icon(
-              Icons.person_add, // 人のアイコン
-              color: const Color.fromARGB(255, 156, 151, 154), // アイコンの色
-              size: 40.0, // アイコンのサイズ
+              Icons.person_add,
+              color: const Color.fromARGB(255, 156, 151, 154),
+              size: 40.0,
             ),
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
@@ -53,8 +54,8 @@ class FirstPage extends StatelessWidget {
       body: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center, // 水平方向に中央揃え
-            crossAxisAlignment: CrossAxisAlignment.center, // 縦方向に中央揃え
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TextButton(
                 onPressed: () {},
@@ -69,9 +70,7 @@ class FirstPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                width: 15,
-              ),
+              SizedBox(width: 15),
               TextButton(
                 onPressed: () {
                   Navigator.pushReplacement(
@@ -92,14 +91,19 @@ class FirstPage extends StatelessWidget {
           Expanded(
             child: Center(
               child: Container(
-                width: 500, // 幅を指定してサイズを調整
-                child: ListView(
-                  shrinkWrap: true, // リストの高さに合わせてサイズを調整
-                  children: [
-                    TweetTile(),
-                    TweetTile(),
-                    TweetTile(),
-                  ],
+                width: 500,
+                child: ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
+                    return ChangeNotifierProvider(
+                      create: (context) => LikeModel(),
+                      child: Consumer<LikeModel>(
+                        builder: (context, likeModel, child) {
+                          return TweetTile(likeModel: likeModel);
+                        },
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -111,9 +115,9 @@ class FirstPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   child: Icon(
-                    Icons.home, // homeのアイコン
-                    color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
-                    size: 55.0, // アイコンのサイズ
+                    Icons.home,
+                    color: const Color.fromARGB(255, 106, 120, 115),
+                    size: 55.0,
                   ),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
@@ -132,9 +136,9 @@ class FirstPage extends StatelessWidget {
                     );
                   },
                   child: Icon(
-                    Icons.local_fire_department, // rankingのアイコン
-                    color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
-                    size: 55.0, // アイコンのサイズ
+                    Icons.local_fire_department,
+                    color: const Color.fromARGB(255, 106, 120, 115),
+                    size: 55.0,
                   ),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
@@ -144,9 +148,7 @@ class FirstPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(0),
                       )),
                 ),
-                SizedBox(
-                  width: 20,
-                ),
+                SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(
@@ -155,9 +157,9 @@ class FirstPage extends StatelessWidget {
                     );
                   },
                   child: Icon(
-                    Icons.person, // 人のアイコン
-                    color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
-                    size: 55.0, // アイコンのサイズ
+                    Icons.person,
+                    color: const Color.fromARGB(255, 106, 120, 115),
+                    size: 55.0,
                   ),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
@@ -177,37 +179,31 @@ class FirstPage extends StatelessWidget {
 }
 
 class TweetTile extends StatelessWidget {
-  const TweetTile({
-    super.key,
-  });
+  final LikeModel likeModel;
+
+  const TweetTile({super.key, required this.likeModel});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start, //左端揃え
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
             backgroundImage: NetworkImage(
                 'https://1.bp.blogspot.com/-uAkJ4ehhFCg/XPymAIaJjSI/AAAAAAABTEs/Ubz2hOuxoKsGko03KjU_Z9HHj64xtRFygCLcBGAs/s800/toilet_study_man.png'),
           ),
-          SizedBox(
-            width: 15,
-          ),
+          SizedBox(width: 15),
           Column(
-            //縦に文字を並べる
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                //横に文字を並べる
                 children: [
                   Text('ユーザー名'),
                 ],
               ),
-              SizedBox(
-                height: 15,
-              ), //縦幅の確保
+              SizedBox(height: 15),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -215,20 +211,23 @@ class TweetTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 200.0, // 幅
-                        height: 350.0, // 高さ
-                        color: const Color.fromARGB(255, 35, 158, 189), // 背景色
+                        width: 200.0,
+                        height: 350.0,
+                        color: const Color.fromARGB(255, 35, 158, 189),
                         child: Text("スケジュール"),
                       ),
                       Row(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              likeModel.toggleLike();
+                            },
                             child: Icon(
-                              Icons.favorite, // ハートのアイコン
-                              color: const Color.fromARGB(
-                                  255, 236, 93, 164), // アイコンの色
-                              size: 25.0, // アイコンのサイズ
+                              likeModel.isLiked
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: const Color.fromARGB(255, 236, 93, 164),
+                              size: 25.0,
                             ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.transparent,
@@ -238,13 +237,17 @@ class TweetTile extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(0),
                                 )),
                           ),
+                          Text('${likeModel.likes}'),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              likeModel.toggleSave(); // 保存状態を切り替え
+                            },
                             child: Icon(
-                              Icons.save, // 保存アイコン
-                              color: const Color.fromARGB(
-                                  182, 22, 45, 217), // アイコンの色
-                              size: 30.0, // アイコンのサイズ
+                              likeModel.isSaved
+                                  ? Icons.bookmark // 保存された状態
+                                  : Icons.bookmark_border, // 保存されていない状態
+                              color: const Color.fromARGB(255, 22, 45, 217),
+                              size: 30.0,
                             ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.transparent,
@@ -258,43 +261,62 @@ class TweetTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
+                  SizedBox(width: 10),
                   Column(
                     children: [
                       Container(
-                        width: 90.0, // 幅
-                        height: 90.0, // 高さ
-                        color: const Color.fromARGB(255, 33, 162, 176), // 背景色
+                        width: 90.0,
+                        height: 90.0,
+                        color: const Color.fromARGB(255, 33, 162, 176),
                         child: Text("写真１"),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
+                      SizedBox(height: 15),
                       Container(
-                        width: 90.0, // 幅
-                        height: 90.0, // 高さ
-                        color: const Color.fromARGB(255, 19, 151, 39), // 背景色
+                        width: 90.0,
+                        height: 90.0,
+                        color: const Color.fromARGB(255, 19, 151, 39),
                         child: Text("写真２"),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
+                      SizedBox(height: 15),
                       Container(
-                        width: 90.0, // 幅
-                        height: 90.0, // 高さ
-                        color: const Color.fromARGB(255, 38, 136, 216), // 背景色
+                        width: 90.0,
+                        height: 90.0,
+                        color: const Color.fromARGB(255, 38, 136, 216),
                         child: Text("写真３"),
                       ),
                     ],
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ],
       ),
     );
+  }
+}
+
+class LikeModel with ChangeNotifier {
+  int _likes = 0;
+  bool _isLiked = false;
+  bool _isSaved = false; // 保存の状態
+
+  int get likes => _likes;
+  bool get isLiked => _isLiked;
+  bool get isSaved => _isSaved;
+
+  void toggleLike() {
+    if (_isLiked) {
+      _likes--;
+    } else {
+      _likes++;
+    }
+    _isLiked = !_isLiked;
+    notifyListeners();
+  }
+
+  void toggleSave() {
+    _isSaved = !_isSaved; // 状態を切り替える
+    notifyListeners(); // UIを更新
   }
 }

@@ -53,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
                 );
               },
               child: Icon(
-                Icons.save, // saveのアイコン
+                Icons.bookmark, // saveのアイコン
                 color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                 size: 30.0, // アイコンのサイズ
               ),
@@ -92,7 +92,8 @@ class _HomeViewState extends State<HomeView> {
             child: Center(
               child: Text(
                 DateFormat('MMMM yyyy').format(selectedDate),
-                style: TextStyle(color: Colors.white, fontSize: 24),
+                style: TextStyle(
+                    color: const Color.fromARGB(255, 34, 32, 32), fontSize: 24),
               ),
             ),
           ),
