@@ -103,7 +103,7 @@ class FriendPage extends StatelessWidget {
                   onPressed: () {},
                   child: Icon(
                     Icons.home, // homeのアイコン
-                    color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
+                    color: const Color.fromARGB(255, 120, 106, 120), // アイコンの色
                     size: 55.0, // アイコンのサイズ
                   ),
                   style: ElevatedButton.styleFrom(
@@ -210,7 +210,7 @@ class TweetTile extends StatelessWidget {
                       Container(
                         width: 200.0, // 幅
                         height: 350.0, // 高さ
-                        color: const Color.fromARGB(255, 35, 158, 189), // 背景色
+                        color: const Color.fromARGB(255, 104, 192, 210), // 背景色
                         child: Text("スケジュール"),
                       ),
                       Row(
@@ -267,7 +267,7 @@ class TweetTile extends StatelessWidget {
                       Container(
                         width: 90.0, // 幅
                         height: 90.0, // 高さ
-                        color: const Color.fromARGB(255, 33, 162, 176), // 背景色
+                        color: const Color.fromARGB(255, 158, 234, 95), // 背景色
                         child: Text("写真１"),
                       ),
                       SizedBox(
@@ -276,7 +276,7 @@ class TweetTile extends StatelessWidget {
                       Container(
                         width: 90.0, // 幅
                         height: 90.0, // 高さ
-                        color: const Color.fromARGB(255, 19, 151, 39), // 背景色
+                        color: const Color.fromARGB(255, 228, 138, 195), // 背景色
                         child: Text("写真２"),
                       ),
                       SizedBox(
@@ -285,7 +285,7 @@ class TweetTile extends StatelessWidget {
                       Container(
                         width: 90.0, // 幅
                         height: 90.0, // 高さ
-                        color: const Color.fromARGB(255, 38, 136, 216), // 背景色
+                        color: const Color.fromARGB(255, 202, 220, 135), // 背景色
                         child: Text("写真３"),
                       ),
                     ],
