@@ -1,112 +1,7 @@
-// import 'package:flutter/material.dart';
-// import 'package:sharelife/main.dart';
-// import 'package:sharelife/my_page.dart';
-// import 'package:sharelife/ranking_page.dart';
-
-// class AddPage extends StatelessWidget {
-//   const AddPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Sharelife'),
-//       ),
-//       body: Column(
-//         children: [
-//           const Row(
-//             mainAxisAlignment: MainAxisAlignment.center, // 水平方向に中央揃え
-//             crossAxisAlignment: CrossAxisAlignment.center, // 縦方向に中央揃え
-//           ),
-//           Expanded(
-//             child: Center(
-//               child: Container(
-//                 width: 500, // 幅を指定してサイズを調整
-//               ),
-//             ),
-//           ),
-//           Center(
-//             child: Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.pushReplacement(
-//                       context,
-//                       MaterialPageRoute(builder: (context) => FirstPage()),
-//                     );
-//                   },
-//                   child: Icon(
-//                     Icons.home, // homeのアイコン
-//                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
-//                     size: 55.0, // アイコンのサイズ
-//                   ),
-//                   style: ElevatedButton.styleFrom(
-//                       backgroundColor: Colors.transparent,
-//                       shadowColor: Colors.transparent,
-//                       elevation: 0,
-//                       shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.circular(0),
-//                       )),
-//                 ),
-//                 SizedBox(
-//                   width: 20,
-//                 ),
-//                 ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.pushReplacement(
-//                       context,
-//                       MaterialPageRoute(builder: (context) => RankingPage()),
-//                     );
-//                   },
-//                   child: Icon(
-//                     Icons.local_fire_department, // ランキングのアイコン
-//                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
-//                     size: 55.0, // アイコンのサイズ
-//                   ),
-//                   style: ElevatedButton.styleFrom(
-//                       backgroundColor: Colors.transparent,
-//                       shadowColor: Colors.transparent,
-//                       elevation: 0,
-//                       shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.circular(0),
-//                       )),
-//                 ),
-//                 SizedBox(
-//                   width: 20,
-//                 ),
-//                 ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.pushReplacement(
-//                       context,
-//                       MaterialPageRoute(builder: (context) => MyPage()),
-//                     );
-//                   },
-//                   child: Icon(
-//                     Icons.person, // 人のアイコン
-//                     color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
-//                     size: 55.0, // アイコンのサイズ
-//                   ),
-//                   style: ElevatedButton.styleFrom(
-//                       backgroundColor: Colors.transparent,
-//                       shadowColor: Colors.transparent,
-//                       elevation: 0,
-//                       shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.circular(0),
-//                       )),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:sharelife/main.dart';
 import 'package:sharelife/my_page.dart';
+import 'package:sharelife/qr_page.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({super.key});
@@ -138,6 +33,29 @@ class _AddPageState extends State<AddPage> {
                   _searchQuery = query;
                 });
               },
+            ),
+          ),
+          // プロフィールをシェアボタンの追加
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Align(
+              alignment: Alignment.centerRight, // 右側に寄せる
+              child: SizedBox(
+                width: 150, // ボタンの幅を少し小さくする
+                child: ElevatedButton(
+                  onPressed: () {
+                     Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => QrPage()),
+                    );
+                  },
+                  child: Text('プロフィールをシェア'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 26, 171, 219), // ボタンの色
+                    padding: EdgeInsets.symmetric(vertical: 12), // ボタンの上下の余白を調整
+                  ),
+                ),
+              ),
             ),
           ),
           Expanded(
