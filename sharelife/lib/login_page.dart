@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sharelife/sinkilogin_page.dart';
 
 void main() {
   runApp(LoginPage());
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('ログイン'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -57,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: _passwordController,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: 'パスワード',
                 border: OutlineInputBorder(),
               ),
               obscureText: true, // パスワードを隠す
@@ -65,11 +66,23 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: _login,
-              child: Text('Login'),
+              child: Text('ログイン'),
             ),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => SinkiloginPage()),
+                    );
+          // 戻るボタンの処理（何もしない場合は空でも可）
+        },
+        child: Icon(Icons.arrow_back), // 戻るアイコン
+        tooltip: '戻る',
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat, // 左下に配置
     );
   }
 }

@@ -10,7 +10,6 @@ class SinkiloginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sharelife Example',
       home: HomePage(), // HomePageに切り替え
     );
   }
@@ -21,7 +20,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sharelife Example'),
       ),
       body: Center(
         child: Column(
