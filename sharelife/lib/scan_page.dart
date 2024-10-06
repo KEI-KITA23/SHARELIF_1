@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:sharelife/main.dart';
+import 'package:sharelife/home_page.dart';
 import 'package:sharelife/my_page.dart';
 import 'package:sharelife/ranking_page.dart';
 import 'scanned_result_page.dart'; // 新しい画面をインポート
@@ -19,7 +19,8 @@ class ScanPage extends StatelessWidget {
           MobileScanner(
             onDetect: (capture) {
               final List<Barcode> barcodes = capture.barcodes;
-              final String? code = barcodes.isNotEmpty ? barcodes.first.rawValue : null;
+              final String? code =
+                  barcodes.isNotEmpty ? barcodes.first.rawValue : null;
 
               if (code != null) {
                 print('QR Code detected: $code');
