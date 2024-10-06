@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sharelife/main.dart';
+import 'package:sharelife/home_page.dart';
 import 'package:sharelife/keep_page.dart';
 import 'package:sharelife/ranking_page.dart';
 import 'package:intl/intl.dart';

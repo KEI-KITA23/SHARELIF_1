@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart'; // QRコードのパッケージをインポート
-import 'package:sharelife/main.dart';
+import 'package:sharelife/home_page.dart';
 import 'package:sharelife/my_page.dart';
 import 'package:sharelife/ranking_page.dart';
 import 'package:sharelife/scan_page.dart';
@@ -22,9 +22,9 @@ class QrPage extends StatelessWidget {
               icon: Icon(Icons.qr_code, size: 60), // アイコンサイズを60に設定
               onPressed: () {
                 Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => ScanPage()),
-                    );//スキャンページに移動
+                  context,
+                  MaterialPageRoute(builder: (context) => ScanPage()),
+                ); //スキャンページに移動
               },
             ),
           ),

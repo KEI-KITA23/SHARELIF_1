@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sharelife/friend_page.dart';
-import 'package:sharelife/my_page.dart';
-import 'package:sharelife/add_page.dart';
-import 'package:sharelife/ranking_page.dart';
-import 'package:provider/provider.dart';
+import 'package:sharelife/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,308 +11,267 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: FirstPage(),
+      home: SinkiloginPage(),
     );
   }
 }
 
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+class SinkiloginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomePage(), // HomePageに切り替え
+    );
+  }
+}
+
+//
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start, // 上に寄せる
+          children: [
+            SizedBox(height: 250), // 上にスペースを確保
+            Text(
+              'Sharelife',
+              style: TextStyle(
+                fontSize: 100, // フォントサイズを大きく
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 50), // 「Sharelife」とボタンの間にスペースを追加
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => SinkiPage()),
+                );
+                // 新規登録ボタンの処理
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    const Color.fromARGB(255, 134, 227, 137), // 緑色のボタン
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              ),
+              child: Text(
+                '新規登録',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            SizedBox(height: 20), // ボタン同士のスペースを追加
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+                // ログインボタンの処理
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    const Color.fromARGB(255, 253, 86, 142), // ピンク色のボタン
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              ),
+              child: Text(
+                'ログイン',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SinkiPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Sign Up Screen',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: SignUpScreen(),
+    );
+  }
+}
+
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  void _signUp() {
+    final username = _usernameController.text;
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    // 新規登録処理を追加
+    print('Username: $username');
+    print('Email: $email');
+    print('Password: $password');
+  }
+
+  void _goBack() {
+    Navigator.pop(context); // 前の画面に戻る
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sharelife'),
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => AddPage()),
-              );
-            },
-            child: Icon(
-              Icons.person_add,
-              color: const Color.fromARGB(255, 156, 151, 154),
-              size: 40.0,
-            ),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(0),
-                )),
-          ),
-        ],
+        title: Text('サインアップ'),
       ),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'フォロー中',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.black,
-                    decorationThickness: 2.0,
-                  ),
-                ),
-              ),
-              SizedBox(width: 15),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => FriendPage()),
-                  );
-                },
-                child: Text(
-                  'ともだち',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: Center(
-              child: Container(
-                width: 500,
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return ChangeNotifierProvider(
-                      create: (context) => LikeModel(),
-                      child: Consumer<LikeModel>(
-                        builder: (context, likeModel, child) {
-                          return TweetTile(likeModel: likeModel);
-                        },
-                      ),
-                    );
-                  },
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                labelText: 'ユーザーネーム',
+                border: OutlineInputBorder(),
               ),
             ),
-          ),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Icon(
-                    Icons.home,
-                    color: const Color.fromARGB(255, 106, 120, 115),
-                    size: 55.0,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0),
-                      )),
-                ),
-                SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => RankingPage()),
-                    );
-                  },
-                  child: Icon(
-                    Icons.local_fire_department,
-                    color: const Color.fromARGB(255, 106, 120, 115),
-                    size: 55.0,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0),
-                      )),
-                ),
-                SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyPage()),
-                    );
-                  },
-                  child: Icon(
-                    Icons.person,
-                    color: const Color.fromARGB(255, 106, 120, 115),
-                    size: 55.0,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0),
-                      )),
-                ),
-              ],
+            SizedBox(height: 16.0),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'メールアドレスもしくは電話番号',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.emailAddress,
             ),
-          ),
-        ],
+            SizedBox(height: 16.0),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                labelText: 'パスワード',
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true, // パスワードを隠す
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: _signUp,
+              child: Text('サインアップ'),
+            ),
+          ],
+        ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => SinkiloginPage()),
+          );
+          // ログインボタンの処理
+        },
+        child: Icon(Icons.arrow_back), // 戻るアイコン
+        tooltip: '戻る',
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.startFloat, // 左下に配置
     );
   }
 }
 
-class TweetTile extends StatelessWidget {
-  final LikeModel likeModel;
+//ログイン
+class LoginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Login Screen',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: LoginScreen(),
+    );
+  }
+}
 
-  const TweetTile({super.key, required this.likeModel});
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  void _login() {
+    final username = _usernameController.text;
+    final password = _passwordController.text;
+
+    // ここにログイン処理を追加
+    print('Username: $username');
+    print('Password: $password');
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(
-                'https://1.bp.blogspot.com/-uAkJ4ehhFCg/XPymAIaJjSI/AAAAAAABTEs/Ubz2hOuxoKsGko03KjU_Z9HHj64xtRFygCLcBGAs/s800/toilet_study_man.png'),
-          ),
-          SizedBox(width: 15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text('ユーザー名'),
-                ],
-              ),
-              SizedBox(height: 15),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 200.0,
-                        height: 350.0,
-                        color: const Color.fromARGB(255, 35, 158, 189),
-                        child: Text("スケジュール"),
-                      ),
-                      Row(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              likeModel.toggleLike();
-                            },
-                            child: Icon(
-                              likeModel.isLiked
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: const Color.fromARGB(255, 236, 93, 164),
-                              size: 25.0,
-                            ),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(0),
-                                )),
-                          ),
-                          Text('${likeModel.likes}'),
-                          ElevatedButton(
-                            onPressed: () {
-                              likeModel.toggleSave(); // 保存状態を切り替え
-                            },
-                            child: Icon(
-                              likeModel.isSaved
-                                  ? Icons.bookmark // 保存された状態
-                                  : Icons.bookmark_border, // 保存されていない状態
-                              color: const Color.fromARGB(255, 22, 45, 217),
-                              size: 30.0,
-                            ),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.transparent,
-                                shadowColor: Colors.transparent,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(0),
-                                )),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 10),
-                  Column(
-                    children: [
-                      Container(
-                        width: 90.0,
-                        height: 90.0,
-                        color: const Color.fromARGB(255, 33, 162, 176),
-                        child: Text("写真１"),
-                      ),
-                      SizedBox(height: 15),
-                      Container(
-                        width: 90.0,
-                        height: 90.0,
-                        color: const Color.fromARGB(255, 19, 151, 39),
-                        child: Text("写真２"),
-                      ),
-                      SizedBox(height: 15),
-                      Container(
-                        width: 90.0,
-                        height: 90.0,
-                        color: const Color.fromARGB(255, 38, 136, 216),
-                        child: Text("写真３"),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ログイン'),
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                labelText: 'ID',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                labelText: 'パスワード',
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true, // パスワードを隠す
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => FirstPage()),
+                );
+              },
+              child: Text('ログイン'),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => SinkiloginPage()),
+          );
+          // 戻るボタンの処理（何もしない場合は空でも可）
+        },
+        child: Icon(Icons.arrow_back), // 戻るアイコン
+        tooltip: '戻る',
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.startFloat, // 左下に配置
     );
-  }
-}
-
-class LikeModel with ChangeNotifier {
-  int _likes = 0;
-  bool _isLiked = false;
-  bool _isSaved = false; // 保存の状態
-
-  int get likes => _likes;
-  bool get isLiked => _isLiked;
-  bool get isSaved => _isSaved;
-
-  void toggleLike() {
-    if (_isLiked) {
-      _likes--;
-    } else {
-      _likes++;
-    }
-    _isLiked = !_isLiked;
-    notifyListeners();
-  }
-
-  void toggleSave() {
-    _isSaved = !_isSaved; // 状態を切り替える
-    notifyListeners(); // UIを更新
   }
 }
