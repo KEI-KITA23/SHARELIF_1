@@ -74,7 +74,7 @@ class _DayViewPageState extends State<DayViewPage> {
             ElevatedButton(
               onPressed: () {},
               child: Icon(
-                Icons.menu, // menuのアイコン
+                Icons.add_circle_outline, // menuのアイコン
                 color: const Color.fromARGB(255, 106, 120, 115), // アイコンの色
                 size: 30.0, // アイコンのサイズ
               ),
