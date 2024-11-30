@@ -1,5 +1,6 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
+//import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 import '/calender_widget/event_details_page.dart';
 
@@ -82,9 +83,9 @@ class DayViewWidget extends StatelessWidget {
               "${date.hour}:${date.minute}",
               textAlign: TextAlign.right,
               style: TextStyle(
-                color: const Color.fromARGB(255, 20, 21, 21).withAlpha(50),
+                color: const Color.fromARGB(255, 20, 20, 21).withAlpha(50),
                 fontStyle: FontStyle.italic,
-                fontSize: 12,
+                fontSize: 15,
               ),
             ),
           ),
@@ -102,6 +103,11 @@ class DayViewWidget extends StatelessWidget {
           child: Text(
             "$hour ${date.hour ~/ 12 == 0 ? "am" : "pm"}",
             textAlign: TextAlign.right,
+            style: TextStyle(
+              color: const Color.fromARGB(255, 100, 181, 201),
+              fontStyle: FontStyle.italic,
+              fontSize: 18,
+            ),
           ),
         ),
       ],
