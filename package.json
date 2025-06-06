@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "drizzle-orm": "^0.36.4",
+    "hono": "^4.6.12"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.28.1"
+  }
+}
